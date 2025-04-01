@@ -1,0 +1,15 @@
+.DS_Store
+atp.egg-info
+**/__pycache__
+**/wandb/
+*.log
+*.ipynb
+*.png
+**/outputs/
+**/lightning_logs/
+.hydra/
+*_log.txt
+**/artifacts
+logs/**
+.vscode/
+debug/

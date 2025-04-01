@@ -1,0 +1,6 @@
+model_checkpoint:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  monitor: ${trainer.monitor}
+  mode: min
+  save_top_k: 1
+  save_last: true

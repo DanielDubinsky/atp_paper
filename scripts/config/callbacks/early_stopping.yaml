@@ -1,0 +1,6 @@
+early_stopping:
+  _target_: lightning.pytorch.callbacks.EarlyStopping
+  monitor: ${trainer.monitor}
+  min_delta: 0.0
+  patience: 20
+  mode: min

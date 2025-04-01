@@ -1,0 +1,42 @@
+_target_: albumentations.from_dict
+transform_dict:
+  __version__: 1.2.1
+  transform:
+    __class_fullname__: Compose
+    additional_targets: {}
+    bbox_params: null
+    keypoint_params: null
+    p: 1.0
+    transforms:
+    - __class_fullname__: HorizontalFlip
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: VerticalFlip
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: RandomRotate90
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: Transpose
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: RandomBrightnessContrast
+      always_apply: false
+      brightness_by_max: true
+      brightness_limit: [-0.2, 0.2]
+      contrast_limit: [-0.2, 0.2]
+      p: 0.5
+    - __class_fullname__: RandomGamma
+      always_apply: false
+      eps: null
+      gamma_limit: [80, 120]
+      p: 0.5
+    - __class_fullname__: RandomToneCurve
+      always_apply: false
+      p: 0.5
+      scale: 0.1
+    - __class_fullname__: CLAHE
+      always_apply: false
+      clip_limit: [0.3, 1]
+      p: 0.5
+      tile_grid_size: [8, 8]

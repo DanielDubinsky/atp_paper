@@ -1,0 +1,33 @@
+defaults:
+  - module: regression
+  - datamodule: atp_datamodule
+  - override datamodule/train_transforms: rot_flip
+  - callbacks:
+    - early_stopping
+    - learning_rate_monitor
+    - model_checkpoint
+  - _self_
+
+name: null
+log_dir: logs/
+
+module:
+  cls:
+    path: atp.regression_module.PairRegressionModule
+  optimizer:
+    weight_decay: 0.0001
+  head:
+    hidden_channels: [128, 64, 32]
+
+datamodule:
+  dataset_class: 
+    _target_: atp.dataset.ATPPairDataset
+  batch_size: 8
+
+trainer:
+  max_epochs: 150
+  seed: 42
+  accumulate_grad_batches: 1  
+  monitor: val_loss
+  accelerator: cuda
+  devices: [0]

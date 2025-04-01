@@ -1,0 +1,18 @@
+defaults:
+  - train_transforms: all
+  - _self_
+
+_target_: atp.datamodule.DataModule
+dataset_class:
+    _target_: atp.dataset.ATPDataset
+    _partial_: True
+dataframe_path: data/data_labeled.csv
+root: ./data/images_labeled_256
+resolution: [256, 256]
+batch_size: 32
+num_workers: 4
+preprocessors: []
+splitter:
+  _target_: atp.utils.splitters.ChronologicalLocationBatchSplitter
+  train_domain: A_echo_rebel
+  seed: 42  

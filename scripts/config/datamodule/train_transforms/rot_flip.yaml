@@ -1,0 +1,22 @@
+_target_: albumentations.from_dict
+transform_dict:
+  __version__: 1.2.1
+  transform:
+    __class_fullname__: Compose
+    additional_targets: {}
+    bbox_params: null
+    keypoint_params: null
+    p: 1.0
+    transforms:
+    - __class_fullname__: HorizontalFlip
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: VerticalFlip
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: RandomRotate90
+      always_apply: false
+      p: 0.5
+    - __class_fullname__: Transpose
+      always_apply: false
+      p: 0.5

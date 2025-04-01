@@ -1,0 +1,28 @@
+cls:
+  _target_: hydra.utils.get_class
+  path: atp.regression_module.RegressionModule
+loss:
+  _target_: torch.nn.MSELoss
+encoder:
+  name: resnet18
+  norm_layer: batch_norm
+  weights: null
+  freeze: false
+head:
+  _target_: torchvision.ops.MLP
+  _partial_: true
+  hidden_channels: [32, 32, 32, 32]
+  dropout: 0.3
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: True
+  lr: 0.0001
+  weight_decay: 0.0005
+
+lr_scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: True
+  mode: min
+  factor: 0.5
+  patience: 15
